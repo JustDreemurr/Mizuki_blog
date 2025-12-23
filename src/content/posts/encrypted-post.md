@@ -91,10 +91,8 @@ When a alias is set:
 
 ```mermaid
 graph LR
-    A[User Password] --> B[bcrypt Hash]
-    B --> C[Password Hash]
-    C --> D[Extract First 32 Characters]
-    D --> E[Encryption Key]
-    E --> F[AES Encryption]
-    F --> G[Encrypted Content]
+    A[User Password] --> B[Direct AES Decryption]
+    B --> C{Check Prefix?}
+    C -- "MIZUKI-VERIFY:" found --> D[Success: Render Content]
+    C -- Random/Garbage --> E[Fail: Wrong Password]
 ```

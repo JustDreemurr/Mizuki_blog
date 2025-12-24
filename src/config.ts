@@ -199,7 +199,7 @@ export const siteConfig: SiteConfig = {
 			fontFamily: "OPPOSans4.0圆体",
 			fontWeight: "500",
 			localFonts: ["OPPOSans4.0圆体.ttf"],
-			enableCompress: true, // 启用字体子集优化，减少字体文件大小
+			enableCompress: false, // 启用字体子集优化，减少字体文件大小
 		},
 	},
 	showLastModified: true, // 控制“上次编辑”卡片显示的开关

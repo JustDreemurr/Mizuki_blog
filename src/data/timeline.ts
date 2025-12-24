@@ -28,10 +28,10 @@ export const timelineData: TimelineItem[] = [
 		id: "current-study",
 		title: "正在学习数据结构与算法",
 		description:
-			"Currently studying Computer Science and Technology, focusing on web development and software engineering.",
+			"一年为期，再度重来",
 		type: "education",
 		startDate: "2025-12-24",
-		icon: "material-symbols:school",
+		icon: "material-symbols:code",
 		color: "#99D0D9",
 		featured: true,
 	},
@@ -55,7 +55,7 @@ export const timelineData: TimelineItem[] = [
 		startDate: "2025-9-6",
 		endDate: "2025-12-3",
 		skills: ["Basic Programming Concepts"],
-		icon: "material-symbols:code",
+		icon: "material-symbols:school",
 		color: "#4d6782",
 	},
 ];

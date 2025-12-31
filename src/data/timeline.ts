@@ -50,7 +50,7 @@ export const timelineData: TimelineItem[] = [
 		id: "change-major-failure",
 		title: "第一次备战转专业失败",
 		description:
-			"在考前20天被告知临时改为机试，复习30题左右后开始摆烂，被无情击碎，以0.33分不到之差失之交臂",
+			"在考前20天被告知临时改为机试，复习30题左右后开始摆烂，以0.33分之差失之交臂",
 		type: "education",
 		startDate: "2025-9-6",
 		endDate: "2025-12-3",

@@ -40,7 +40,7 @@ export const siteConfig: SiteConfig = {
 		anime: true, // 番剧页面开关
 		diary: true, // 日记页面开关
 		friends: true, // 友链页面开关
-		projects: true, // 项目页面开关
+		projects: false, // 项目页面开关
 		skills: false, // 技能页面开关
 		timeline: true, // 时间线页面开关
 		albums: true, // 相册页面开关
@@ -199,7 +199,7 @@ export const siteConfig: SiteConfig = {
 			fontFamily: "OPPOSans4.0圆体",
 			fontWeight: "500",
 			localFonts: ["OPPOSans4.0圆体.ttf"],
-			enableCompress: false, // 启用字体子集优化，减少字体文件大小
+			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
 	},
 	showLastModified: true, // 控制“上次编辑”卡片显示的开关
@@ -322,7 +322,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.webp", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
+	avatar: "assets/images/33_avatar.jpg", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
 	name: "JustDreemurr",
 	bio: "Chasing.",
 	typewriter: {

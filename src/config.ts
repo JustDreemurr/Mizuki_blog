@@ -50,7 +50,7 @@ export const siteConfig: SiteConfig = {
 	// 顶栏标题配置
 	navbarTitle: {
 		// 顶栏标题文本
-		text: "MizukiUI",
+		text: "Blog",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.png
 		icon: "assets/home/home.png",
 	},
@@ -196,9 +196,9 @@ export const siteConfig: SiteConfig = {
 		},
 		cjkFont: {
 			// 中日韩字体 - 作为回退字体
-			fontFamily: "OPPOSans4.0圆体",
+			fontFamily: "江城圆体 500W",
 			fontWeight: "500",
-			localFonts: ["OPPOSans4.0圆体.ttf"],
+			localFonts: ["江城圆体 500W.ttf"],
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
 	},

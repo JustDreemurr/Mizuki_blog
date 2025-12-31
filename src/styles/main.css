@@ -19,10 +19,10 @@
 
 /* 导入 萝莉体 第二版 字体 */
 @font-face {
-  font-family: "OPPOSans4.0圆体";
-  src: url("/assets/font/OPPOSans4.0圆体.woff2") format("woff2");
+  font-family: "江城圆体 500W";
+  src: url("/assets/font/江城圆体 500W.woff2") format("woff2");
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-display: swap;
 }
 

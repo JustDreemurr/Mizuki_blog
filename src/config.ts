@@ -135,7 +135,7 @@ export const siteConfig: SiteConfig = {
 		// 请自行搭建API
 
 		homeText: {
-			enable: true, // 在主页显示自定义文本
+			enable: false, // 在主页显示自定义文本
 			title: "美しいミズキ", // 主页横幅主标题
 
 			subtitle: [

@@ -267,7 +267,7 @@ export const navBarConfig: NavBarConfig = {
 					url: "/anime/",
 					icon: "material-symbols:movie",
 				},
-				{
+				/*{
 					name: "Diary",
 					url: "/diary/",
 					icon: "material-symbols:book",
@@ -276,7 +276,7 @@ export const navBarConfig: NavBarConfig = {
 					name: "Gallery",
 					url: "/albums/",
 					icon: "material-symbols:photo-library",
-				},
+				},*/
 				{
 					name: "Devices",
 					url: "devices/",
@@ -339,7 +339,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github",
-			url: "https://github.com/matsuzaka-yuki",
+			url: "https://github.com/JustDreemurr",
 		},
 		{
 			name: "Steam",

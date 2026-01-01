@@ -249,6 +249,12 @@ export const navBarConfig: NavBarConfig = {
 					external: true,
 					icon: "fa6-brands:github",
 				},
+				{
+					name: "Steam",
+					url: "https://steamcommunity.com/id/Asriel139/",
+					external: true,
+					icon: "fa6-brands:steam",
+				},				
 			],
 		},
 		{
@@ -301,7 +307,7 @@ export const navBarConfig: NavBarConfig = {
 			url: "#",
 			icon: "material-symbols:more-horiz",
 			children: [
-				{
+				/*{
 					name: "Projects",
 					url: "/projects/",
 					icon: "material-symbols:work",
@@ -310,7 +316,7 @@ export const navBarConfig: NavBarConfig = {
 					name: "Skills",
 					url: "/skills/",
 					icon: "material-symbols:psychology",
-				},
+				},*/
 				{
 					name: "Timeline",
 					url: "/timeline/",
@@ -335,6 +341,11 @@ export const profileConfig: ProfileConfig = {
 			icon: "fa6-brands:github",
 			url: "https://github.com/matsuzaka-yuki",
 		},
+		{
+			name: "Steam",
+			icon: "fa6-brands:steam",
+			url: "https://steamcommunity.com/id/Asriel139/",
+		},		
 	],
 };
 

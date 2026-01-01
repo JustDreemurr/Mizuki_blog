@@ -28,7 +28,7 @@ export const timelineData: TimelineItem[] = [
 		id: "current-study",
 		title: "正在学习数据结构与算法",
 		description:
-			"一年为期，再度重来",
+			"",
 		type: "education",
 		startDate: "2025-12-24",
 		icon: "material-symbols:code",

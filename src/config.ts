@@ -95,19 +95,27 @@ export const siteConfig: SiteConfig = {
 		src: {
 			desktop: [
 				"/assets/desktop-banner/1.webp",
-				"/assets/desktop-banner/2.webp",
-				"/assets/desktop-banner/3.webp",
-				"/assets/desktop-banner/4.webp",
 				"/assets/desktop-banner/5.webp",
-				"/assets/desktop-banner/6.webp",
+				"/assets/desktop-banner/36568195_p0.jpeg",
+				"/assets/desktop-banner/39060333_p0.jpeg",
+				"/assets/desktop-banner/55739709_p0.png",
+				"/assets/desktop-banner/58809152_p0.jpeg",
+				"/assets/desktop-banner/75353267_p0.jpeg",
+				"/assets/desktop-banner/79583539_p0.jpeg",
+				"/assets/desktop-banner/81113906_p0.png",
+				"/assets/desktop-banner/83019878_p0.png",
+				"/assets/desktop-banner/84437762_p0.png",
+
+
 			], // 桌面横幅图片
 			mobile: [
-				"/assets/mobile-banner/1.webp",
-				"/assets/mobile-banner/2.webp",
-				"/assets/mobile-banner/3.webp",
-				"/assets/mobile-banner/4.webp",
-				"/assets/mobile-banner/5.webp",
-				"/assets/mobile-banner/6.webp",
+				"/assets/mobile-banner/50967778_p0.jpeg",
+				"/assets/mobile-banner/83110343_p5.jpeg",
+				"/assets/mobile-banner/88588799_p1.jpeg",
+				"/assets/mobile-banner/86094006_p0.jpeg",
+				"/assets/mobile-banner/83742172_p0.jpeg",
+				"/assets/mobile-banner/91451279_p0.png",
+				"/assets/mobile-banner/83612969_p0.jpeg",																										
 			], // 移动横幅图片
 		}, // 使用本地横幅图片
 

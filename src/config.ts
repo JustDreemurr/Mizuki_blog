@@ -97,15 +97,13 @@ export const siteConfig: SiteConfig = {
 				"/assets/desktop-banner/1.webp",
 				"/assets/desktop-banner/2.webp",
 				"/assets/desktop-banner/3.webp",
-				"/assets/desktop-banner/4.webp",												
+				"/assets/desktop-banner/4.webp",
 				"/assets/desktop-banner/5.webp",
 				"/assets/desktop-banner/6.webp",
 				"/assets/desktop-banner/7.webp",
-				"/assets/desktop-banner/8.webp",												
+				"/assets/desktop-banner/8.webp",
 				"/assets/desktop-banner/9.webp",
 				"/assets/desktop-banner/10.webp",
-
-
 			], // 桌面横幅图片
 			mobile: [
 				"/assets/mobile-banner/1.webp",
@@ -114,7 +112,7 @@ export const siteConfig: SiteConfig = {
 				"/assets/mobile-banner/4.webp",
 				"/assets/mobile-banner/5.webp",
 				"/assets/mobile-banner/6.webp",
-				"/assets/mobile-banner/7.webp",																										
+				"/assets/mobile-banner/7.webp",
 			], // 移动横幅图片
 		}, // 使用本地横幅图片
 
@@ -261,7 +259,7 @@ export const navBarConfig: NavBarConfig = {
 					url: "https://steamcommunity.com/id/Asriel139/",
 					external: true,
 					icon: "fa6-brands:steam",
-				},				
+				},
 			],
 		},
 		{
@@ -352,7 +350,7 @@ export const profileConfig: ProfileConfig = {
 			name: "Steam",
 			icon: "fa6-brands:steam",
 			url: "https://steamcommunity.com/id/Asriel139/",
-		},		
+		},
 	],
 };
 
@@ -616,7 +614,7 @@ export const sakuraConfig: SakuraConfig = {
 
 // Pio 看板娘配置
 export const pioConfig: import("./types/config").PioConfig = {
-	enable: false, // 启用看板娘
+	enable: true, // 启用看板娘
 	models: ["/pio/models/pio/model.json"], // 默认模型路径
 	position: "left", // 默认位置在右侧
 	width: 280, // 默认宽度

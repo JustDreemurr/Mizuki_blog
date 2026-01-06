@@ -23,7 +23,6 @@ import {
 import { defaultFavicons } from "../constants/icon";
 import type { Favicon } from "../types/config";
 import { pathsEqual, url } from "../utils/url-utils";
-
 import "../styles/mobile-navbar.css";
 import "../styles/wallpaper-navbar-transparent.css";
 import "../styles/fancybox-custom.css";
@@ -54,6 +53,7 @@ const configHue = siteConfig.themeColor.hue;
 // 获取导航栏透明模式配置
 const navbarTransparentMode =
 	siteConfig.banner?.navbar?.transparentMode || "semi";
+
 // 判断是否应该显示顶部高光效果（只在full和semifull模式下显示）
 const shouldShowTopHighlight =
 	navbarTransparentMode === "full" || navbarTransparentMode === "semifull";
@@ -135,21 +135,18 @@ const umamiScripts = umamiConfig.scripts || ""; // 获取Umami scripts配置
 let bodyFontFamily = "";
 if (siteConfig.font) {
 	const fonts: string[] = [];
-
 	// 先添加 ASCII 字体（优先级最高）
 	if (siteConfig.font.asciiFont?.fontFamily) {
 		const asciiFont = siteConfig.font.asciiFont.fontFamily;
 		// 如果字体名包含空格，需要用引号包围
 		fonts.push(asciiFont.includes(" ") ? `"${asciiFont}"` : asciiFont);
 	}
-
 	// 再添加 CJK 字体（作为回退）
 	if (siteConfig.font.cjkFont?.fontFamily) {
 		const cjkFont = siteConfig.font.cjkFont.fontFamily;
 		// 如果字体名包含空格，需要用引号包围
 		fonts.push(cjkFont.includes(" ") ? `"${cjkFont}"` : cjkFont);
 	}
-
 	// 添加系统字体作为最终回退
 	fonts.push(
 		"system-ui",
@@ -164,7 +161,6 @@ if (siteConfig.font) {
 		"'Helvetica Neue'",
 		"sans-serif",
 	);
-
 	// 组合成完整的 font-family 字符串
 	bodyFontFamily = fonts.join(", ");
 }
@@ -221,7 +217,6 @@ if (siteConfig.font) {
 		</script>
 
 		<title>{pageTitle}</title>
-
 		<meta charset="UTF-8" />
 		<meta name="description" content={description || pageTitle} />
 		{
@@ -233,7 +228,6 @@ if (siteConfig.font) {
 			)
 		}
 		<meta name="author" content={profileConfig.name} />
-
 		<meta property="og:site_name" content={siteConfig.title} />
 		<meta property="og:url" content={Astro.url} />
 		<meta property="og:title" content={pageTitle} />
@@ -246,12 +240,10 @@ if (siteConfig.font) {
 				<meta property="og:type" content="website" />
 			)
 		}
-
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={Astro.url} />
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={description || pageTitle} />
-
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		{
@@ -302,7 +294,6 @@ if (siteConfig.font) {
 			const expressiveTheme = isDark ? "github-dark" : "github-light";
 			const currentTheme =
 				document.documentElement.getAttribute("data-theme");
-
 			// 只在主题不同时才更新，避免触发不必要的重绘
 			if (currentTheme !== expressiveTheme) {
 				document.documentElement.setAttribute(
@@ -331,8 +322,8 @@ if (siteConfig.font) {
 				"page-width": `${PAGE_WIDTH}rem`,
 			}}
 		></style>
-		<!-- defines global css variables. This will be applied to <html> <body> and some other elements idk why -->
 
+		<!-- defines global css variables. This will be applied to <html> <body> and some other elements idk why -->
 		<slot name="head" />
 
 		<!-- Pio 看板娘样式 - 仅在启用时加载 -->
@@ -367,9 +358,9 @@ if (siteConfig.font) {
 				width="0"
 				style="display:none;visibility:hidden"></iframe></noscript
 		>
-
 		<!-- 页面顶部渐变高光效果 - 只在full和semifull模式下显示 -->
 		{shouldShowTopHighlight && <div class="top-gradient-highlight" />}
+
 		<ConfigCarrier />
 		<slot />
 
@@ -400,7 +391,6 @@ if (siteConfig.font) {
 		.enable-banner #banner-wrapper {
 			@apply h-[var(--banner-height-home)];
 		}
-
 		.enable-banner.is-home #banner {
 			@apply h-[var(--banner-height-home)] translate-y-0;
 		}
@@ -424,7 +414,6 @@ if (siteConfig.font) {
 		.waves > .parallax use {
 			animation: wave 25s cubic-bezier(0.5, 0.5, 0.45, 0.5) infinite;
 		}
-
 		@keyframes wave {
 			0% {
 				transform: translate3d(-90px, 0, 0);
@@ -440,10 +429,10 @@ if (siteConfig.font) {
 	// import { animationManager } from '../utils/animation-utils';
 	import "overlayscrollbars/overlayscrollbars.css";
 	// import {
-	// 	OverlayScrollbars,
-	// 	// ScrollbarsHidingPlugin,
-	// 	// SizeObserverPlugin,
-	// 	// ClickScrollPlugin
+	//  OverlayScrollbars,
+	//  // ScrollbarsHidingPlugin,
+	//  // SizeObserverPlugin,
+	//  // ClickScrollPlugin
 	// } from 'overlayscrollbars';
 	// import {getHue, getStoredTheme, setHue, setTheme} from "../utils/setting-utils";
 	import { pathsEqual, url } from "../utils/url-utils";
@@ -459,6 +448,7 @@ if (siteConfig.font) {
 	const BANNER_HEIGHT = 35;
 	const BANNER_HEIGHT_EXTEND = 30;
 	const BANNER_HEIGHT_HOME = BANNER_HEIGHT + BANNER_HEIGHT_EXTEND;
+
 	// const MAIN_PANEL_OVERLAPS_BANNER_HEIGHT = 3.5;
 	import { siteConfig } from "../config";
 	import { widgetConfigs } from "../config";
@@ -471,15 +461,15 @@ if (siteConfig.font) {
 
 	/* Preload fonts */
 	// (async function() {
-	// 	try {
-	// 		await Promise.all([
-	// 			document.fonts.load("400 1em Roboto"),
-	// 			document.fonts.load("700 1em Roboto"),
-	// 		]);
-	// 		document.body.classList.remove("hidden");
-	// 	} catch (error) {
-	// 		console.log("Failed to load fonts:", error);
-	// 	}
+	//  try {
+	//      await Promise.all([
+	//          document.fonts.load("400 1em Roboto"),
+	//          document.fonts.load("700 1em Roboto"),
+	//      ]);
+	//      document.body.classList.remove("hidden");
+	//  } catch (error) {
+	//      console.log("Failed to load fonts:", error);
+	//  }
 	// })();
 
 	/* TODO This is a temporary solution for style flicker issue when the transition is activated */
@@ -487,29 +477,28 @@ if (siteConfig.font) {
 	/* update: fixed in Astro 3.2.4 */
 	/*
 function disableAnimation() {
-	const css = document.createElement('style')
-	css.appendChild(
-		document.createTextNode(
-			`*{
+    const css = document.createElement('style')
+    css.appendChild(
+        document.createTextNode(
+            `*{
               -webkit-transition:none!important;
               -moz-transition:none!important;
               -o-transition:none!important;
               -ms-transition:none!important;
               transition:none!important
               }`
-		)
-	)
-	document.head.appendChild(css)
+        )
+    )
+    document.head.appendChild(css)
 
-	return () => {
-		// Force restyle
-		;(() => window.getComputedStyle(document.body))()
-
-		// Wait for next tick before removing
-		setTimeout(() => {
-			document.head.removeChild(css)
-		}, 1)
-	}
+    return () => {
+        // Force restyle
+        ;(() => window.getComputedStyle(document.body))()
+        // Wait for next tick before removing
+        setTimeout(() => {
+            document.head.removeChild(css)
+        }, 1)
+    }
 }
 */
 
@@ -536,6 +525,7 @@ function disableAnimation() {
 					await panelManager.closePanel(panel as any);
 				});
 			}
+
 			setClickOutsideToClose("display-setting", [
 				"display-setting",
 				"display-settings-switch",
@@ -568,12 +558,12 @@ function disableAnimation() {
 	initializePanelManager();
 
 	// function _loadTheme() {
-	// 	const theme = getStoredTheme()
-	// 	setTheme(theme)
+	//  const theme = getStoredTheme()
+	//  setTheme(theme)
 	// }
 
 	// function _loadHue() {
-	// 	setHue(getHue())
+	//  setHue(getHue())
 	// }
 
 	function initCustomScrollbar() {
@@ -582,6 +572,7 @@ function disableAnimation() {
 		const katexElements = document.querySelectorAll(
 			".katex-display:not([data-scrollbar-initialized])",
 		) as NodeListOf<HTMLElement>;
+
 		katexElements.forEach((element) => {
 			if (!element.parentNode) return;
 
@@ -592,28 +583,29 @@ function disableAnimation() {
 
 			// 使用简单的CSS滚动条而不是OverlayScrollbars
 			container.style.cssText = `
-			overflow-x: auto;
-			scrollbar-width: thin;
-			scrollbar-color: rgba(0,0,0,0.3) transparent;
-		`;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0,0,0,0.3) transparent;
+        `;
 
 			// 为webkit浏览器添加自定义滚动条样式
 			const style = document.createElement("style");
 			style.textContent = `
-			.katex-display-container::-webkit-scrollbar {
-				height: 6px;
-			}
-			.katex-display-container::-webkit-scrollbar-track {
-				background: transparent;
-			}
-			.katex-display-container::-webkit-scrollbar-thumb {
-				background: rgba(0,0,0,0.3);
-				border-radius: 3px;
-			}
-			.katex-display-container::-webkit-scrollbar-thumb:hover {
-				background: rgba(0,0,0,0.5);
-			}
-		`;
+            .katex-display-container::-webkit-scrollbar {
+                height: 6px;
+            }
+            .katex-display-container::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .katex-display-container::-webkit-scrollbar-thumb {
+                background: rgba(0,0,0,0.3);
+                border-radius: 3px;
+            }
+            .katex-display-container::-webkit-scrollbar-thumb:hover {
+                background: rgba(0,0,0,0.5);
+            }
+        `;
+
 			if (!document.head.querySelector("style[data-katex-scrollbar]")) {
 				style.setAttribute("data-katex-scrollbar", "true");
 				document.head.appendChild(style);
@@ -653,7 +645,6 @@ function disableAnimation() {
 
 	function initCarousel() {
 		const carouselItems = document.querySelectorAll(".carousel-item");
-
 		// 根据屏幕尺寸过滤有效的轮播项
 		const isMobile = window.innerWidth < 1024; // lg breakpoint
 		const validItems = Array.from(carouselItems).filter((item) => {
@@ -677,7 +668,6 @@ function disableAnimation() {
 			// Show random valid image
 			const randomIndex = Math.floor(Math.random() * validItems.length);
 			const randomItem = validItems[randomIndex];
-
 			randomItem.classList.add("opacity-100", "scale-100");
 			randomItem.classList.remove("opacity-0", "scale-110");
 			return;
@@ -693,6 +683,7 @@ function disableAnimation() {
 			let startX = 0;
 			let startY = 0;
 			let isSwiping = false;
+
 			const carousel = document.getElementById("banner-carousel");
 
 			// 切换图片的函数 - 基于有效项目
@@ -786,7 +777,6 @@ function disableAnimation() {
 						startY = 0;
 						isSwiping = false;
 						isPaused = false;
-
 						// 重新开始自动轮播
 						startCarousel();
 					},
@@ -812,7 +802,6 @@ function disableAnimation() {
 					isPaused = true;
 					clearInterval(carouselInterval);
 				});
-
 				carousel.addEventListener("mouseleave", () => {
 					isPaused = false;
 					startCarousel();
@@ -922,7 +911,7 @@ function disableAnimation() {
 
 		Fancybox.bind(albumLinksSelector, {
 			...commonConfig,
-			source: (el) => {
+			source: (el: any) => {
 				return el.getAttribute("data-src") || el.getAttribute("href");
 			},
 		});
@@ -936,7 +925,6 @@ function disableAnimation() {
 	// 清理 Fancybox 实例
 	function cleanupFancybox() {
 		if (!Fancybox) return; // 如果从未加载过，无需清理
-
 		fancyboxSelectors.forEach((selector) => {
 			Fancybox.unbind(selector);
 		});
@@ -946,15 +934,15 @@ function disableAnimation() {
 	const setup = () => {
 		// TODO: temp solution to change the height of the banner
 		/*
-	window.swup.hooks.on('animation:out:start', () => {
-		const path = window.location.pathname
-		const body = document.querySelector('body')
-		if (path[path.length - 1] === '/' && !body.classList.contains('is-home')) {
-			body.classList.add('is-home')
-		} else if (path[path.length - 1] !== '/' && body.classList.contains('is-home')) {
-			body.classList.remove('is-home')
-		}
-	})
+    window.swup.hooks.on('animation:out:start', () => {
+        const path = window.location.pathname
+        const body = document.querySelector('body')
+        if (path[path.length - 1] === '/' && !body.classList.contains('is-home')) {
+            body.classList.add('is-home')
+        } else if (path[path.length - 1] !== '/' && body.classList.contains('is-home')) {
+            body.classList.remove('is-home')
+        }
+    })
 */
 		window.swup.hooks.on("link:click", () => {
 			// Remove the delay for the first time page load
@@ -975,6 +963,7 @@ function disableAnimation() {
 				}
 			}
 		});
+
 		window.swup.hooks.on("content:replace", () => {
 			// 初始化新页面的图片、公式、滚动条和TOC
 			initFancybox();
@@ -1011,7 +1000,6 @@ function disableAnimation() {
 				const transparentMode = navbar.getAttribute(
 					"data-transparent-mode",
 				);
-
 				if (transparentMode === "semifull") {
 					// 重新调用初始化函数来重新绑定滚动事件
 					if (
@@ -1033,7 +1021,6 @@ function disableAnimation() {
 				// 处理 Banner class 和显示状态
 				const bodyElement = document.querySelector("body");
 				const isHomePage = pathsEqual(visit.to.url, url("/"));
-
 				if (bodyElement) {
 					if (isHomePage) {
 						bodyElement.classList.add("lg:is-home");
@@ -1058,7 +1045,6 @@ function disableAnimation() {
 				const navbar = document.getElementById("navbar");
 				if (navbar) {
 					navbar.setAttribute("data-is-home", isHomePage.toString());
-
 					// 重新初始化semifull模式的滚动检测
 					const transparentMode = navbar.getAttribute(
 						"data-transparent-mode",
@@ -1066,10 +1052,10 @@ function disableAnimation() {
 					if (transparentMode === "semifull") {
 						// 重新调用初始化函数来重新绑定滚动事件
 						if (
-							typeof window.initSemifullScrollDetection ===
-							"function"
+							typeof (window as any)
+								.initSemifullScrollDetection === "function"
 						) {
-							window.initSemifullScrollDetection();
+							(window as any).initSemifullScrollDetection();
 						}
 					}
 				}
@@ -1137,6 +1123,7 @@ function disableAnimation() {
 			const storedTheme = localStorage.getItem("theme") || DEFAULT_THEME;
 			const isDark = storedTheme === DARK_MODE;
 			const expectedTheme = isDark ? "github-dark" : "github-light";
+
 			const currentTheme =
 				document.documentElement.getAttribute("data-theme");
 			const hasDarkClass =
@@ -1209,7 +1196,6 @@ function disableAnimation() {
 		setup();
 	} else {
 		document.addEventListener("swup:enable", setup);
-
 		// 监听 DOM 加载 (确保首屏也能加载优化组件)
 		if (document.readyState === "loading") {
 			document.addEventListener("DOMContentLoaded", () => {
@@ -1269,9 +1255,9 @@ function disableAnimation() {
 				const currentBannerHeight = isHome
 					? BANNER_HEIGHT_HOME
 					: BANNER_HEIGHT;
+
 				const threshold =
 					window.innerHeight * (currentBannerHeight / 100) - 88;
-
 				if (scrollTop >= threshold) {
 					navbar.classList.add("navbar-hidden");
 				} else {

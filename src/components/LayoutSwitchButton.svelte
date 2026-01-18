@@ -59,7 +59,7 @@ function onAnimationEnd() {
 }
 
 function handleMediaQueryChange(e: MediaQueryListEvent | MediaQueryList) {
-    isSmallScreen = e.matches;
+    isSmallScreen = !e.matches;
 }
 
 onMount(() => {
@@ -79,7 +79,7 @@ onMount(() => {
         updateStorage(defaultLayout);
     }
 
-    mediaQueryList = window.matchMedia(`(max-width: ${BREAKPOINT}px)`);
+    mediaQueryList = window.matchMedia(`(min-width: ${BREAKPOINT}px)`);
     handleMediaQueryChange(mediaQueryList);
 
     if (mediaQueryList.addEventListener) {

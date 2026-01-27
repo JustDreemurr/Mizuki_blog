@@ -362,7 +362,7 @@ export const profileConfig: ProfileConfig = {
 	},
 	links: [
 		{
-			name: "Bilibli",
+			name: "Bilibili",
 			icon: "fa6-brands:bilibili",
 			url: "https://space.bilibili.com/701864046",
 		},

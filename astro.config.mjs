@@ -7,12 +7,12 @@ import swup from "@swup/astro";
 import { defineConfig } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
+import { umami } from "oddmisc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
-import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives";
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
 import { siteConfig } from "./src/config.ts";
@@ -26,6 +26,8 @@ import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
 import { remarkContent } from "./src/plugins/remark-content.mjs";
 import { rehypeImageWidth } from "./src/plugins/rehype-image-width.mjs";
+import rehypeExternalLinks from "rehype-external-links";
+import { remarkFixGithubAdmonitions } from "./src/plugins/remark-fix-github-admonitions.js";
 
 // https://astro.build/config
 export default defineConfig({
@@ -36,6 +38,9 @@ export default defineConfig({
 	output: "static",
 
 	integrations: [
+		umami({
+			shareUrl: false,
+		}),
 		tailwind({
 			nesting: true,
 		}),
@@ -44,10 +49,10 @@ export default defineConfig({
 			animationClass: "transition-swup-",
 			containers: ["main"],
 			smoothScrolling: false, // 禁用平滑滚动以提升性能，避免与锚点导航冲突
-			cache: true,
+			cache: process.env.NODE_ENV === "production",
 			preload: true, // swup 默认鼠标悬停预加载
 			accessibility: true,
-			updateHead: true,
+			updateHead: process.env.NODE_ENV === "production",
 			updateBodyClass: false,
 			globalInstance: true,
 			// 滚动相关配置优化
@@ -119,7 +124,7 @@ export default defineConfig({
 		remarkPlugins: [
 			remarkMath,
 			remarkContent,
-			remarkGithubAdmonitionsToDirectives,
+			remarkFixGithubAdmonitions,
 			remarkDirective,
 			remarkSectionize,
 			parseDirectiveNode,
@@ -127,10 +132,16 @@ export default defineConfig({
 		],
 		rehypePlugins: [
 			rehypeKatex,
+			[
+				rehypeExternalLinks,
+				{
+					target: "_blank",
+					rel: ["nofollow", "noopener", "noreferrer"],
+				},
+			],
 			rehypeSlug,
 			rehypeWrapTable,
 			rehypeMermaid,
-			rehypeImageWidth,
 			[
 				rehypeComponents,
 				{
@@ -163,6 +174,7 @@ export default defineConfig({
 					},
 				},
 			],
+			rehypeImageWidth,
 		],
 	},
 	vite: {

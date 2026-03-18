@@ -1,4 +1,5 @@
-# 🌸 Mizuki <img align='right' src='logo.png' width='200px' alt="Mizuki logo">
+# 🌸 Mizuki 
+<img align='right' src='logo.png' width='200px' alt="Mizuki logo">
 
 A modern, feature-rich static blog template built with [Astro](https://astro.build), featuring advanced functionality and beautiful design.
 
@@ -10,7 +11,7 @@ A modern, feature-rich static blog template built with [Astro](https://astro.bui
 
 [**🖥️ Live Demo**](https://mizuki.mysqil.com/) | [**📝 Documentation**](https://docs.mizuki.mysqil.com/)
 
-🌏 README Languages
+🌏 **README Languages:**
 [**English**](./README.md) / [**中文**](./README.zh.md) / [**日本語**](./README.ja.md) / [**中文繁体**](./README.tw.md) /
 
 Get started quickly with our comprehensive documentation. Whether you're customizing your theme, configuring features, or deploying to production, the documentation covers everything you need to launch your blog successfully.
@@ -32,6 +33,15 @@ Get started quickly with our comprehensive documentation. Whether you're customi
   <tr>
 </table>
 
+## 🚀 NEW: Automatic Resolution Adaptation
+
+> **🎯 Automatic Resolution Algorithm** - Intelligently adapts content layout based on device screen resolution, providing the best viewing experience for all devices
+
+🌏 README Language
+[**English**](./README.md) /
+[**中文**](./README.zh.md) /
+[**日本語**](./README.ja.md) /
+[**中文繁体**](./README.tw.md) /
 
 
 ### 🔧 Component Configuration System Restructuring
@@ -139,15 +149,7 @@ Deploy your blog to any static hosting platform:
 - **GitHub Pages:** Use the included GitHub Actions workflow
 - **Cloudflare Pages:** Connect your repository
 
-- **Environment Variable Configuration (Optional):** Configure in `.env` file or deployment platform
-
-```bash
-# Umami API key for accessing Umami analytics data
-# If Umami is enabled in config.ts, it's recommended to configure the API key here
-UMAMI_API_KEY=your_umami_api_key_here
-# bcrypt salt rounds (10-14 recommended, default 12)
-BCRYPT_SALT_ROUNDS=12
-```
+- **Environment Variable Configuration (Optional):** Refer to `.env.example` for configuration
 
 Before deployment, update the `siteURL` in `src/config.ts`.
 **Not recommended** to commit the `.env` file to Git. The `.env` file should only be used for local debugging or building. For cloud platform deployment, it's recommended to configure via the platform's `environment variables` settings.
@@ -164,6 +166,7 @@ tags: [tag1, tag2]
 category: Frontend
 draft: false
 pinned: false
+comment: true
 lang: en      # Only set when article language differs from site language in config.ts
 ---
 ```
@@ -178,6 +181,7 @@ lang: en      # Only set when article language differs from site language in con
 - **category**: Article category
 - **draft**: Set to `true` to hide article in production
 - **pinned**: Set to `true` to pin article to top
+- **comment**: Set to `true` to enable article comment area (requires global comment function enabled)
 - **lang**: Article language (only set when different from site default)
 
 ### Pinned Articles Feature
@@ -193,6 +197,19 @@ pinned: false # Regular article (default)
 **Sorting Rules:**
 1. Pinned articles appear first, sorted by publication date (newest first)
 2. Regular articles follow, sorted by publication date (newest first)
+
+### Article-Level Comment Control
+
+The `comment` field allows you to individually control the enabling and disabling of the comment area for each article.
+
+**Usage:**
+```yaml
+comment: true  # Enable comments (default)
+comment: false # Disable comments
+```
+
+**Note:**
+This feature requires the comment system to be enabled in `src/config.ts` first.
 
 ## 🧩 Markdown Extensions
 

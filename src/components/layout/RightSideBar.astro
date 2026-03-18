@@ -1,13 +1,13 @@
 ---
 import type { MarkdownHeading } from "astro";
-import Announcement from "@/components/widget/Announcement.astro";
-import Calendar from "@/components/widget/Calendar.astro";
-import Categories from "@/components/widget/Categories.astro";
-import MusicPlayer from "@/components/widget/MusicPlayer.svelte";
-import Profile from "@/components/widget/Profile.astro";
-import SiteStats from "@/components/widget/SiteStats.astro";
-import Tags from "@/components/widget/Tags.astro";
-import TOC from "@/components/widget/TOC.astro";
+import Announcement from "@/components/widgets/announcement/Announcement.astro";
+import Calendar from "@/components/widgets/calendar/Calendar.astro";
+import Categories from "@/components/widgets/categories/Categories.astro";
+import MusicPlayer from "@/components/widgets/music-player/MusicPlayer.svelte";
+import Profile from "@/components/widgets/profile/Profile.astro";
+import SiteStats from "@/components/widgets/site-stats/SiteStats.astro";
+import Tags from "@/components/widgets/tags/Tags.astro";
+import { SidebarTOC } from "@/components/features/toc";
 import { widgetManager } from "@/utils/widget-manager";
 
 interface Props {
@@ -30,7 +30,7 @@ const componentMap = {
 	announcement: Announcement,
 	categories: Categories,
 	tags: Tags,
-	toc: TOC,
+	toc: SidebarTOC,
 	"music-player": MusicPlayer,
 	"site-stats": SiteStats,
 	calendar: Calendar,
@@ -104,14 +104,12 @@ function renderComponent(component: any, index: number, _components: any[]) {
       display: var(--sidebar-mobile-display, block);
     }
   }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: 1280px) {
     #right-sidebar {
       display: var(--sidebar-tablet-display, block);
     }
   }
-
-  @media (min-width: 1025px) {
+  @media (min-width: 1281px) {
     #right-sidebar {
       display: var(--sidebar-desktop-display, block);
     }
@@ -120,6 +118,7 @@ function renderComponent(component: any, index: number, _components: any[]) {
 
 <script>
   import { widgetManager } from "../../utils/widget-manager";
+  const RIGHT_SIDEBAR_MANAGER_KEY = '__mizukiRightSidebarManagerInitialized';
   
   // 响应式布局管理
   class RightSidebarManager {
@@ -129,14 +128,35 @@ function renderComponent(component: any, index: number, _components: any[]) {
     
     init() {
       this.updateResponsiveDisplay();
-      window.addEventListener('resize', () => this.updateResponsiveDisplay());
+      if (!(window as any).__mizukiRightSidebarResizeHandler) {
+        (window as any).__mizukiRightSidebarResizeHandler = () => this.updateResponsiveDisplay();
+        window.addEventListener('resize', (window as any).__mizukiRightSidebarResizeHandler);
+      }
       
       // 监听SWUP内容替换事件
-      if (typeof window !== 'undefined' && (window as any).swup) {
+      if (typeof window !== 'undefined' && (window as any).swup && !(window as any).__mizukiRightSidebarSwupHooked) {
+        (window as any).__mizukiRightSidebarSwupHooked = true;
         (window as any).swup.hooks.on('content:replace', () => {
           // 延迟执行以确保DOM已更新
           setTimeout(() => {
-            this.updateResponsiveDisplay();
+            const breakpoints = widgetManager.getBreakpoints();
+            const width = window.innerWidth;
+            let deviceType: 'mobile' | 'tablet' | 'desktop';
+            if (width < breakpoints.mobile) {
+              deviceType = 'mobile';
+            } else if (width < breakpoints.tablet) {
+              deviceType = 'tablet';
+            } else {
+              deviceType = 'desktop';
+            }
+
+            const sidebar = document.getElementById('right-sidebar');
+            if (!sidebar) return;
+
+            sidebar.style.setProperty(
+              `--sidebar-${deviceType}-display`,
+              widgetManager.shouldShowSidebar(deviceType) ? 'block' : 'none'
+            );
           }, 100);
         });
       }
@@ -168,5 +188,8 @@ function renderComponent(component: any, index: number, _components: any[]) {
   }
   
   // 初始化右侧边栏管理器
-  new RightSidebarManager();
+  if (!(window as any)[RIGHT_SIDEBAR_MANAGER_KEY]) {
+    (window as any)[RIGHT_SIDEBAR_MANAGER_KEY] = true;
+    new RightSidebarManager();
+  }
 </script>

@@ -1,0 +1,40 @@
+<script lang="ts">
+	import VolumeButton from "../atoms/VolumeButton.svelte";
+	import VolumeSlider from "../atoms/VolumeSlider.svelte";
+	import type { Action } from "svelte/action";
+
+	interface Props {
+		volume: number;
+		isMuted: boolean;
+		isVolumeDragging: boolean;
+		volumeBarRef: Action<HTMLElement, undefined>;
+		onVolumeButtonClick: () => void;
+		onSliderPointerDown: (event: PointerEvent) => void;
+		onSliderKeyDown: (event: KeyboardEvent) => void;
+		ariaLabel: string;
+	}
+
+	let {
+		volume,
+		isMuted,
+		isVolumeDragging,
+		volumeBarRef,
+		onVolumeButtonClick,
+		onSliderPointerDown,
+		onSliderKeyDown,
+		ariaLabel,
+	}: Props = $props();
+</script>
+
+<div class="bottom-controls flex items-center gap-2">
+	<VolumeButton {volume} {isMuted} onclick={onVolumeButtonClick} />
+	<VolumeSlider
+		{volume}
+		{isVolumeDragging}
+		{volumeBarRef}
+		onpointerdown={onSliderPointerDown}
+		onkeydown={onSliderKeyDown}
+		{ariaLabel}
+	/>
+	<slot />
+</div>

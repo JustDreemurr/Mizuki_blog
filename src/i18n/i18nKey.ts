@@ -71,10 +71,7 @@ enum I18nKey {
 	animeStudio = "animeStudio",
 	animeEmpty = "animeEmpty",
 	animeEmptyBangumi = "animeEmptyBangumi",
-	animeEmptyBilibili = "animeEmptyBilibili",
 	animeEmptyLocal = "animeEmptyLocal",
-	animeConfigBilibili = "animeConfigBilibili",
-	animeConfigBangumi = "animeConfigBangumi",
 
 	// 短文页面
 	diarySubtitle = "diarySubtitle",
@@ -321,10 +318,6 @@ enum I18nKey {
 	profileStatsPageViews = "profileStatsPageViews",
 	profileStatsVisits = "profileStatsVisits",
 	profileStatsUnavailable = "profileStatsUnavailable",
-
-	// 页面访问量统计
-	pageViewsLoading = "pageViewsLoading",
-	pageViewsUnavailable = "pageViewsUnavailable",
 
 	// 布局切换按钮
 	switchToGridMode = "switchToGridMode",

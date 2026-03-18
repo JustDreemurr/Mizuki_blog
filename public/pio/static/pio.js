@@ -335,11 +335,11 @@ var Paul_Pio = function (prop) {
 			current.body.style.bottom = null;
 		}
 
-		current.body.classList.add("pio-hidden");
+		current.body.classList.add("hidden");
 		elements.dialog.classList.remove("active");
 
 		elements.show.onclick = () => {
-			current.body.classList.remove("pio-hidden");
+			current.body.classList.remove("hidden");
 			localStorage.setItem("posterGirl", "1");
 
 			this.init();

@@ -23,11 +23,11 @@ import { Icon } from "astro-icon/components";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import { licenseConfig, permalinkConfig, shareConfig } from "src/config";
-import Image from "../../components/atoms/image/Image.astro";
-import PostMetadata from "@components/features/posts/PostMeta.astro";
+import ImageWrapper from "../../components/misc/ImageWrapper.astro";
+import PostMetadata from "../../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
-import Encryptor from "../../components/features/auth/Encryptor.astro";
+import Encryptor from "../../components/Encryptor.astro";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
@@ -117,16 +117,6 @@ if (entry.data.image) {
 		if (file) {
 			const img = await file();
 			posterCoverUrl = img.src;
-		}
-	} else if (entry.data.image.startsWith("http")) {
-		try {
-			const response = await fetch(entry.data.image);
-			const arrayBuffer = await response.arrayBuffer();
-			const base64 = Buffer.from(arrayBuffer).toString("base64");
-			const contentType = response.headers.get("content-type") || "image/jpeg";
-			posterCoverUrl = `data:${contentType};base64,${base64}`;
-		} catch {
-			posterCoverUrl = entry.data.image;
 		}
 	}
 }
@@ -282,7 +272,7 @@ const jsonLd = {
                 entry.data.image && siteConfig.showCoverInContent && (
                     <>
                         <div class="mt-4" />
-                        <Image
+                        <ImageWrapper
                             id="post-cover"
                             src={entry.data.image}
                             basePath={getFileDirFromPath(entry.filePath || '')}

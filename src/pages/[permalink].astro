@@ -11,7 +11,7 @@ import { render } from "astro:content";
 import Comment from "@components/comment/index.astro";
 import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
-import PasswordProtection from "@components/features/auth/PasswordProtection.astro";
+import PasswordProtection from "@components/PasswordProtection.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
@@ -24,8 +24,8 @@ import CryptoJS from "crypto-js";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import { licenseConfig } from "src/config";
-import Image from "../components/atoms/image/Image.astro";
-import PostMetadata from "@components/features/posts/PostMeta.astro";
+import ImageWrapper from "../components/misc/ImageWrapper.astro";
+import PostMetadata from "../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../config";
 import { formatDateToYYYYMMDD } from "../utils/date-utils";
 
@@ -203,7 +203,7 @@ const jsonLd = {
                 entry.data.image && siteConfig.showCoverInContent && (
                     <>
                         <div class="mt-4" />
-                        <Image
+                        <ImageWrapper
                             id="post-cover"
                             src={entry.data.image}
                             basePath={getFileDirFromPath(entry.filePath || '')}
